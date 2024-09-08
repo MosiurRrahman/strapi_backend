@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_components_blog_cards",
+  "info": {
+    "displayName": "blog card"
+  },
+  "options": {},
+  "attributes": {
+    "category": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "author_name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_components_work_cards",
+  "info": {
+    "displayName": "work_card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "enumeration",
+      "enum": [
+        "Web Design",
+        "Development",
+        "Software"
+      ]
+    },
+    "link": {
+      "type": "string"
+    },
+    "button_url": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

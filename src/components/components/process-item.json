@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_components_process_items",
+  "info": {
+    "displayName": "process_item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "process_list": {
+      "type": "enumeration",
+      "enum": [
+        "Initial Consultation.",
+        "Market Research.",
+        "Strategic Planning.",
+        "Wireframing",
+        "Design Mockups.",
+        "Implementation.",
+        "Design Implementation.",
+        "Testing & Fixing.",
+        "Product Launch"
+      ]
+    }
+  }
+}

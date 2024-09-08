@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_components_counters",
+  "info": {
+    "displayName": "counter"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "count_number": {
+      "type": "string"
+    }
+  }
+}
