@@ -10,24 +10,28 @@
     "sub_title": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
-    },
     "description": {
       "type": "richtext"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "video_link": {
       "type": "string"
     },
     "success_rate": {
       "type": "string"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "title2": {
+      "type": "blocks"
     }
   }
 }

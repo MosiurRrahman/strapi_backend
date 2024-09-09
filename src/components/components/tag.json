@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_components_tags",
+  "info": {
+    "displayName": "tag"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "isVisible": {
+      "type": "boolean"
+    },
+    "isLink": {
+      "type": "boolean"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

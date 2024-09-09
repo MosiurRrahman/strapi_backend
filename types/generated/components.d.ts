@@ -1,15 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface PartnerLogoPartner extends Schema.Component {
-  collectionName: 'components_partner_logo_partners';
-  info: {
-    displayName: 'partner';
-  };
-  attributes: {
-    image: Attribute.Media<'images'>;
-  };
-}
-
 export interface HomePageSectionWorkSection extends Schema.Component {
   collectionName: 'components_home_page_section_work_sections';
   info: {
@@ -51,6 +41,12 @@ export interface HomePageSectionSolutionSection extends Schema.Component {
       'components.solution-accrodion',
       true
     >;
+    Tag: Attribute.Component<'components.tag', true>;
+    solution_sections: Attribute.Relation<
+      'home-page-section.solution-section',
+      'oneToMany',
+      'api::solution-section.solution-section'
+    >;
   };
 }
 
@@ -64,6 +60,17 @@ export interface HomePageSectionProcessSection extends Schema.Component {
     title: Attribute.String;
     description: Attribute.String;
     process_item: Attribute.Component<'components.process-item', true>;
+  };
+}
+
+export interface HomePageSectionPartnerSection extends Schema.Component {
+  collectionName: 'components_home_page_section_partner_sections';
+  info: {
+    displayName: 'partner section';
+  };
+  attributes: {
+    isOpen: Attribute.Boolean;
+    image: Attribute.Component<'components.image', true>;
   };
 }
 
@@ -101,27 +108,12 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
   attributes: {
     sub_title: Attribute.String;
-    title: Attribute.String;
     description: Attribute.RichText;
     image: Attribute.Media<'images'>;
     video_link: Attribute.String;
     success_rate: Attribute.String;
-  };
-}
-
-export interface AboutSectionAbout extends Schema.Component {
-  collectionName: 'components_about_section_abouts';
-  info: {
-    displayName: 'About';
-    description: '';
-  };
-  attributes: {
-    sub_title: Attribute.String;
-    title: Attribute.String;
-    description: Attribute.String;
-    link: Attribute.Component<'components.link'>;
-    image: Attribute.Component<'components.image', true>;
-    counter: Attribute.Component<'components.counter', true>;
+    title: Attribute.RichText;
+    title2: Attribute.Blocks;
   };
 }
 
@@ -153,25 +145,26 @@ export interface ComponentsTestimonialCard extends Schema.Component {
   };
 }
 
+export interface ComponentsTag extends Schema.Component {
+  collectionName: 'components_components_tags';
+  info: {
+    displayName: 'tag';
+  };
+  attributes: {
+    name: Attribute.String;
+    isVisible: Attribute.Boolean;
+    isLink: Attribute.Boolean;
+    url: Attribute.String;
+  };
+}
+
 export interface ComponentsSolutionAccrodion extends Schema.Component {
   collectionName: 'components_components_solution_accrodions';
   info: {
     displayName: 'solution_accrodion';
+    description: '';
   };
-  attributes: {
-    title: Attribute.String;
-    tag: Attribute.Enumeration<
-      [
-        'Banners',
-        'Logos',
-        'Infographics',
-        'Visiting Card',
-        'Brochure',
-        'Printing'
-      ]
-    >;
-    description: Attribute.String;
-  };
+  attributes: {};
 }
 
 export interface ComponentsProcessItem extends Schema.Component {
@@ -258,20 +251,36 @@ export interface ComponentsAwardList extends Schema.Component {
   };
 }
 
+export interface AboutSectionAbout extends Schema.Component {
+  collectionName: 'components_about_section_abouts';
+  info: {
+    displayName: 'About';
+    description: '';
+  };
+  attributes: {
+    sub_title: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.String;
+    link: Attribute.Component<'components.link'>;
+    image: Attribute.Component<'components.image', true>;
+    counter: Attribute.Component<'components.counter', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'partner-logo.partner': PartnerLogoPartner;
       'home-page-section.work-section': HomePageSectionWorkSection;
       'home-page-section.testimonial-section': HomePageSectionTestimonialSection;
       'home-page-section.solution-section': HomePageSectionSolutionSection;
       'home-page-section.process-section': HomePageSectionProcessSection;
+      'home-page-section.partner-section': HomePageSectionPartnerSection;
       'home-page-section.b-log-section': HomePageSectionBLogSection;
       'home-page-section.award-section': HomePageSectionAwardSection;
       'hero-section.hero-section': HeroSectionHeroSection;
-      'about-section.about': AboutSectionAbout;
       'components.work-card': ComponentsWorkCard;
       'components.testimonial-card': ComponentsTestimonialCard;
+      'components.tag': ComponentsTag;
       'components.solution-accrodion': ComponentsSolutionAccrodion;
       'components.process-item': ComponentsProcessItem;
       'components.link': ComponentsLink;
@@ -279,6 +288,7 @@ declare module '@strapi/types' {
       'components.counter': ComponentsCounter;
       'components.blog-card': ComponentsBlogCard;
       'components.award-list': ComponentsAwardList;
+      'about-section.about': AboutSectionAbout;
     }
   }
 }

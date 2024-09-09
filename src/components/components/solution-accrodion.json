@@ -1,26 +1,9 @@
 {
   "collectionName": "components_components_solution_accrodions",
   "info": {
-    "displayName": "solution_accrodion"
+    "displayName": "solution_accrodion",
+    "description": ""
   },
   "options": {},
-  "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "tag": {
-      "type": "enumeration",
-      "enum": [
-        "Banners",
-        "Logos",
-        "Infographics",
-        "Visiting Card",
-        "Brochure",
-        "Printing"
-      ]
-    },
-    "description": {
-      "type": "string"
-    }
-  }
+  "attributes": {}
 }
