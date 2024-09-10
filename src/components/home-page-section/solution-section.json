@@ -15,20 +15,10 @@
     "description": {
       "type": "string"
     },
-    "solution_accrodions": {
+    "accordion": {
       "type": "component",
       "repeatable": true,
       "component": "components.solution-accrodion"
-    },
-    "Tag": {
-      "type": "component",
-      "repeatable": true,
-      "component": "components.tag"
-    },
-    "solution_sections": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::solution-section.solution-section"
     }
   }
 }

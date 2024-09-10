@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_components_sub_categories",
+  "info": {
+    "displayName": "sub_category",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sub_category": {
+      "type": "string"
+    }
+  }
+}

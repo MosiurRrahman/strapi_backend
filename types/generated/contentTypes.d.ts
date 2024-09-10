@@ -801,11 +801,10 @@ export interface ApiHomeHome extends Schema.SingleType {
   };
   attributes: {
     hero: Attribute.DynamicZone<['hero-section.hero-section']>;
-    about: Attribute.DynamicZone<['about-section.about']>;
-    partner_section: Attribute.Component<
-      'home-page-section.partner-section',
-      true
-    >;
+    partner_section: Attribute.Component<'components.image', true>;
+    about: Attribute.Component<'components.about-section'>;
+    solutions: Attribute.Component<'home-page-section.solution-section', true>;
+    work_section: Attribute.Component<'home-page-section.work-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

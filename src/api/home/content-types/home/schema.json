@@ -18,16 +18,25 @@
         "hero-section.hero-section"
       ]
     },
-    "about": {
-      "type": "dynamiczone",
-      "components": [
-        "about-section.about"
-      ]
-    },
     "partner_section": {
       "type": "component",
       "repeatable": true,
-      "component": "home-page-section.partner-section"
+      "component": "components.image"
+    },
+    "about": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.about-section"
+    },
+    "solutions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "home-page-section.solution-section"
+    },
+    "work_section": {
+      "type": "component",
+      "repeatable": false,
+      "component": "home-page-section.work-section"
     }
   }
 }

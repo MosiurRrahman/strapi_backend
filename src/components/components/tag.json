@@ -1,21 +1,15 @@
 {
   "collectionName": "components_components_tags",
   "info": {
-    "displayName": "tag"
+    "displayName": "tag",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "isVisible": {
-      "type": "boolean"
-    },
-    "isLink": {
-      "type": "boolean"
-    },
-    "url": {
-      "type": "string"
+    "accourdions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.solution-accrodion"
     }
   }
 }

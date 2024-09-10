@@ -7,10 +7,10 @@ export interface HomePageSectionWorkSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    work_card: Attribute.Component<'components.work-card', true>;
     name: Attribute.String;
     description: Attribute.String;
     link: Attribute.Component<'components.link'>;
+    worok_card: Attribute.Component<'components.work-card', true>;
   };
 }
 
@@ -37,16 +37,7 @@ export interface HomePageSectionSolutionSection extends Schema.Component {
     sub_title: Attribute.String;
     title: Attribute.String;
     description: Attribute.String;
-    solution_accrodions: Attribute.Component<
-      'components.solution-accrodion',
-      true
-    >;
-    Tag: Attribute.Component<'components.tag', true>;
-    solution_sections: Attribute.Relation<
-      'home-page-section.solution-section',
-      'oneToMany',
-      'api::solution-section.solution-section'
-    >;
+    accordion: Attribute.Component<'components.solution-accrodion', true>;
   };
 }
 
@@ -67,10 +58,10 @@ export interface HomePageSectionPartnerSection extends Schema.Component {
   collectionName: 'components_home_page_section_partner_sections';
   info: {
     displayName: 'partner section';
+    description: '';
   };
   attributes: {
-    isOpen: Attribute.Boolean;
-    image: Attribute.Component<'components.image', true>;
+    images: Attribute.Component<'components.image', true>;
   };
 }
 
@@ -108,12 +99,12 @@ export interface HeroSectionHeroSection extends Schema.Component {
   };
   attributes: {
     sub_title: Attribute.String;
-    description: Attribute.RichText;
+    title: Attribute.String;
+    description: Attribute.String;
     image: Attribute.Media<'images'>;
-    video_link: Attribute.String;
     success_rate: Attribute.String;
-    title: Attribute.RichText;
-    title2: Attribute.Blocks;
+    video_link: Attribute.String;
+    link: Attribute.Component<'components.link'>;
   };
 }
 
@@ -125,10 +116,8 @@ export interface ComponentsWorkCard extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    tag: Attribute.Enumeration<['Web Design', 'Development', 'Software']>;
-    link: Attribute.String;
-    button_url: Attribute.String;
-    name: Attribute.String;
+    sub_category: Attribute.Component<'components.sub-category', true>;
+    image: Attribute.Media<'images'>;
   };
 }
 
@@ -149,12 +138,21 @@ export interface ComponentsTag extends Schema.Component {
   collectionName: 'components_components_tags';
   info: {
     displayName: 'tag';
+    description: '';
   };
   attributes: {
-    name: Attribute.String;
-    isVisible: Attribute.Boolean;
-    isLink: Attribute.Boolean;
-    url: Attribute.String;
+    accourdions: Attribute.Component<'components.solution-accrodion', true>;
+  };
+}
+
+export interface ComponentsSubCategory extends Schema.Component {
+  collectionName: 'components_components_sub_categories';
+  info: {
+    displayName: 'sub_category';
+    description: '';
+  };
+  attributes: {
+    sub_category: Attribute.String;
   };
 }
 
@@ -164,7 +162,12 @@ export interface ComponentsSolutionAccrodion extends Schema.Component {
     displayName: 'solution_accrodion';
     description: '';
   };
-  attributes: {};
+  attributes: {
+    title: Attribute.String;
+    image: Attribute.Media<'images'>;
+    description: Attribute.String;
+    sub_category: Attribute.Component<'components.sub-category', true>;
+  };
 }
 
 export interface ComponentsProcessItem extends Schema.Component {
@@ -251,6 +254,22 @@ export interface ComponentsAwardList extends Schema.Component {
   };
 }
 
+export interface ComponentsAboutSection extends Schema.Component {
+  collectionName: 'components_components_about_sections';
+  info: {
+    displayName: 'about_section';
+  };
+  attributes: {
+    sub_title: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.String;
+    signature: Attribute.Media<'images'>;
+    link: Attribute.Component<'components.link'>;
+    image: Attribute.Media<'images', true>;
+    counter: Attribute.Component<'components.counter', true>;
+  };
+}
+
 export interface AboutSectionAbout extends Schema.Component {
   collectionName: 'components_about_section_abouts';
   info: {
@@ -281,6 +300,7 @@ declare module '@strapi/types' {
       'components.work-card': ComponentsWorkCard;
       'components.testimonial-card': ComponentsTestimonialCard;
       'components.tag': ComponentsTag;
+      'components.sub-category': ComponentsSubCategory;
       'components.solution-accrodion': ComponentsSolutionAccrodion;
       'components.process-item': ComponentsProcessItem;
       'components.link': ComponentsLink;
@@ -288,6 +308,7 @@ declare module '@strapi/types' {
       'components.counter': ComponentsCounter;
       'components.blog-card': ComponentsBlogCard;
       'components.award-list': ComponentsAwardList;
+      'components.about-section': ComponentsAboutSection;
       'about-section.about': AboutSectionAbout;
     }
   }

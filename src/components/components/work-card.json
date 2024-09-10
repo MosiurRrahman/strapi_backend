@@ -9,22 +9,17 @@
     "title": {
       "type": "string"
     },
-    "tag": {
-      "type": "enumeration",
-      "enum": [
-        "Web Design",
-        "Development",
-        "Software"
-      ]
+    "sub_category": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.sub-category"
     },
-    "link": {
-      "type": "string"
-    },
-    "button_url": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

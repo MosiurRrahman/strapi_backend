@@ -5,5 +5,26 @@
     "description": ""
   },
   "options": {},
-  "attributes": {}
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "sub_category": {
+      "displayName": "sub_category",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.sub-category"
+    }
+  }
 }

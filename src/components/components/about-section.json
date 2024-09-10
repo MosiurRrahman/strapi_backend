@@ -1,9 +1,7 @@
 {
-  "collectionName": "components_hero_section_hero_sections",
+  "collectionName": "components_components_about_sections",
   "info": {
-    "displayName": "Hero Section",
-    "icon": "apps",
-    "description": ""
+    "displayName": "about_section"
   },
   "options": {},
   "attributes": {
@@ -16,23 +14,29 @@
     "description": {
       "type": "string"
     },
-    "image": {
+    "signature": {
       "allowedTypes": [
         "images"
       ],
       "type": "media",
       "multiple": false
     },
-    "success_rate": {
-      "type": "string"
-    },
-    "video_link": {
-      "type": "string"
-    },
     "link": {
       "type": "component",
       "repeatable": false,
       "component": "components.link"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "counter": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.counter"
     }
   }
 }
