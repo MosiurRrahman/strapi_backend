@@ -788,56 +788,29 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomeHome extends Schema.SingleType {
-  collectionName: 'homes';
+export interface ApiAboutPageAboutPage extends Schema.SingleType {
+  collectionName: 'about_pages';
   info: {
-    singularName: 'home';
-    pluralName: 'homes';
-    displayName: 'home';
-    description: '';
+    singularName: 'about-page';
+    pluralName: 'about-pages';
+    displayName: 'about page';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    hero: Attribute.DynamicZone<['hero-section.hero-section']>;
-    partner_section: Attribute.Component<'components.image', true>;
-    about: Attribute.Component<'components.about-section'>;
-    solutions: Attribute.Component<'home-page-section.solution-section', true>;
-    work_section: Attribute.Component<'home-page-section.work-section'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiServiceCategoryServiceCategory extends Schema.SingleType {
-  collectionName: 'service_categories';
-  info: {
-    singularName: 'service-category';
-    pluralName: 'service-categories';
-    displayName: 'Service Category';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    test: Attribute.String;
+    title: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::service-category.service-category',
+      'api::about-page.about-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::service-category.service-category',
+      'api::about-page.about-page',
       'oneToOne',
       'admin::user'
     > &
@@ -845,37 +818,196 @@ export interface ApiServiceCategoryServiceCategory extends Schema.SingleType {
   };
 }
 
-export interface ApiSolutionSectionSolutionSection
-  extends Schema.CollectionType {
-  collectionName: 'solution_sections';
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
   info: {
-    singularName: 'solution-section';
-    pluralName: 'solution-sections';
-    displayName: 'Solution Section';
+    singularName: 'blog';
+    pluralName: 'blogs';
+    displayName: 'Blog';
     description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+    category: Attribute.String;
+    cover_image: Attribute.Media<'images'>;
+    tag: Attribute.String;
+    date: Attribute.Date;
+    slug: Attribute.UID<'api::blog.blog', 'category'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCaseStudyCaseStudy extends Schema.CollectionType {
+  collectionName: 'case_studies';
+  info: {
+    singularName: 'case-study';
+    pluralName: 'case-studies';
+    displayName: 'case study';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Attribute.String;
+    cover_image: Attribute.Media<'images'>;
+    slug: Attribute.UID<'api::case-study.case-study', 'category'>;
+    client_name: Attribute.String;
+    location: Attribute.String;
+    content: Attribute.RichText;
+    title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::case-study.case-study',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::case-study.case-study',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPortfolioWorkPortfolioWork extends Schema.CollectionType {
+  collectionName: 'portfolio_works';
+  info: {
+    singularName: 'portfolio-work';
+    pluralName: 'portfolio-works';
+    displayName: 'Portfolio Work';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    tag: Attribute.String;
+    cover_image: Attribute.Media<'images'>;
+    category: Attribute.String;
+    client_name: Attribute.String;
+    thumb_image: Attribute.Media<'images', true>;
+    content: Attribute.RichText;
+    slug: Attribute.UID<'api::portfolio-work.portfolio-work', 'category'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::portfolio-work.portfolio-work',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::portfolio-work.portfolio-work',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiServiceService extends Schema.CollectionType {
+  collectionName: 'services';
+  info: {
+    singularName: 'service';
+    pluralName: 'services';
+    displayName: 'Service';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+    cover_image: Attribute.Media<'images'>;
+    thumb_image: Attribute.Media<'images', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiServicePageServicePage extends Schema.SingleType {
+  collectionName: 'service_pages';
+  info: {
+    singularName: 'service-page';
+    pluralName: 'service-pages';
+    displayName: 'service page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    service_section: Attribute.Component<'components.service-component'>;
+    solution_section: Attribute.Component<'components.solution-section', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service-page.service-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service-page.service-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTeamTeam extends Schema.CollectionType {
+  collectionName: 'teams';
+  info: {
+    singularName: 'team';
+    pluralName: 'teams';
+    displayName: 'Team';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
-    description: Attribute.String;
+    designation: Attribute.String;
     image: Attribute.Media<'images'>;
-    demo: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::solution-section.solution-section',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::team.team', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::solution-section.solution-section',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::team.team', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -898,9 +1030,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::home.home': ApiHomeHome;
-      'api::service-category.service-category': ApiServiceCategoryServiceCategory;
-      'api::solution-section.solution-section': ApiSolutionSectionSolutionSection;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::blog.blog': ApiBlogBlog;
+      'api::case-study.case-study': ApiCaseStudyCaseStudy;
+      'api::portfolio-work.portfolio-work': ApiPortfolioWorkPortfolioWork;
+      'api::service.service': ApiServiceService;
+      'api::service-page.service-page': ApiServicePageServicePage;
+      'api::team.team': ApiTeamTeam;
     }
   }
 }

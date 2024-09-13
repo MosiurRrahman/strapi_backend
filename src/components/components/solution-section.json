@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_components_solution_sections",
+  "info": {
+    "displayName": "Solution Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
