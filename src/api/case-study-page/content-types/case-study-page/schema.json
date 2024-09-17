@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "case_study_pages",
+  "info": {
+    "singularName": "case-study-page",
+    "pluralName": "case-study-pages",
+    "displayName": "Case Study Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

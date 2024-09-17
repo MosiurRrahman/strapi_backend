@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "blog_girds",
+  "info": {
+    "singularName": "blog-gird",
+    "pluralName": "blog-girds",
+    "displayName": "Blog Gird"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
+    }
+  }
+}

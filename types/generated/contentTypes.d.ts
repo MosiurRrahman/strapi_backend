@@ -788,6 +788,45 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface PluginSlugifySlug extends Schema.CollectionType {
+  collectionName: 'slugs';
+  info: {
+    singularName: 'slug';
+    pluralName: 'slugs';
+    displayName: 'slug';
+  };
+  options: {
+    draftAndPublish: false;
+    comment: '';
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    slug: Attribute.Text;
+    count: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::slugify.slug',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::slugify.slug',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAboutPageAboutPage extends Schema.SingleType {
   collectionName: 'about_pages';
   info: {
@@ -836,13 +875,47 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     cover_image: Attribute.Media<'images'>;
     tag: Attribute.String;
     date: Attribute.Date;
-    slug: Attribute.UID<'api::blog.blog', 'category'>;
+    slug: Attribute.UID<'api::blog.blog', 'title'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBlogGirdBlogGird extends Schema.SingleType {
+  collectionName: 'blog_girds';
+  info: {
+    singularName: 'blog-gird';
+    pluralName: 'blog-girds';
+    displayName: 'Blog Gird';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blogs: Attribute.Relation<
+      'api::blog-gird.blog-gird',
+      'oneToMany',
+      'api::blog.blog'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blog-gird.blog-gird',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blog-gird.blog-gird',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -877,6 +950,133 @@ export interface ApiCaseStudyCaseStudy extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::case-study.case-study',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCaseStudyPageCaseStudyPage extends Schema.SingleType {
+  collectionName: 'case_study_pages';
+  info: {
+    singularName: 'case-study-page';
+    pluralName: 'case-study-pages';
+    displayName: 'Case Study Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::case-study-page.case-study-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::case-study-page.case-study-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHeroSecionHeroSecion extends Schema.SingleType {
+  collectionName: 'hero_secions';
+  info: {
+    singularName: 'hero-secion';
+    pluralName: 'hero-secions';
+    displayName: 'Hero secion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    sub_title: Attribute.String;
+    heading: Attribute.String;
+    sub_heading: Attribute.String;
+    cover: Attribute.Media<'images'>;
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hero-secion.hero-secion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hero-secion.hero-secion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'Home Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blog_section: Attribute.Component<'layout.section-layout'>;
+    award_section: Attribute.Component<'layout.section-layout'>;
+    testimonial_section: Attribute.Component<'layout.section-layout'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPartnerLogoPartnerLogo extends Schema.CollectionType {
+  collectionName: 'partner_logos';
+  info: {
+    singularName: 'partner-logo';
+    pluralName: 'partner-logos';
+    displayName: 'Partner Logo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo_imge: Attribute.Media<'images'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::partner-logo.partner-logo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::partner-logo.partner-logo',
       'oneToOne',
       'admin::user'
     > &
@@ -1012,6 +1212,36 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   };
 }
 
+export interface ApiTeamPageTeamPage extends Schema.SingleType {
+  collectionName: 'team_pages';
+  info: {
+    singularName: 'team-page';
+    pluralName: 'team-pages';
+    displayName: 'Team page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::team-page.team-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::team-page.team-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1030,13 +1260,20 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'plugin::slugify.slug': PluginSlugifySlug;
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::blog.blog': ApiBlogBlog;
+      'api::blog-gird.blog-gird': ApiBlogGirdBlogGird;
       'api::case-study.case-study': ApiCaseStudyCaseStudy;
+      'api::case-study-page.case-study-page': ApiCaseStudyPageCaseStudyPage;
+      'api::hero-secion.hero-secion': ApiHeroSecionHeroSecion;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::partner-logo.partner-logo': ApiPartnerLogoPartnerLogo;
       'api::portfolio-work.portfolio-work': ApiPortfolioWorkPortfolioWork;
       'api::service.service': ApiServiceService;
       'api::service-page.service-page': ApiServicePageServicePage;
       'api::team.team': ApiTeamTeam;
+      'api::team-page.team-page': ApiTeamPageTeamPage;
     }
   }
 }

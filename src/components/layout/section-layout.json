@@ -14,6 +14,9 @@
     },
     "short_description": {
       "type": "string"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }
